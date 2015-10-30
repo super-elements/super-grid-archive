@@ -1,0 +1,22 @@
+{
+  "name": "super-grid",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/super-elements/super-grid.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/super-elements/super-grid/issues"
+  },
+  "homepage": "https://github.com/super-elements/super-grid#readme"
+}
