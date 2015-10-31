@@ -12,5 +12,16 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "devDependencies": {
+    "dgrid": "~0.4.0",
+    "paper-input": "PolymerElements/paper-input#^1.0.0",
+    "google-map": "GoogleWebComponents/google-map#^1.0.0",
+    "handlebars": "~4.0.3",
+    "util": "https://github.com/dojo/util.git#~1.10.4",
+    "paper-button": "PolymerElements/paper-button#~1.0.8"
+  },
+  "dependencies": {
+    "polymer": "Polymer/polymer#~1.1.1"
+  }
 }
