@@ -5,15 +5,11 @@
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="../dgrid/css/dgrid.css">
 	<link rel="stylesheet" href="../dgrid/css/skins/claro.css">
-	<title>Super Grid! Demo</title>
-	<script src="../webcomponentsjs/webcomponents.js"></script>
 	<script src="../handlebars/handlebars.js"> </script>
-
-	<link rel="import" href="../paper-input/paper-input.html" />
-	<link rel="import" href="../google-map/google-map.html" />
-	<link rel="import" href="../paper-button/paper-button.html" />
-	<link rel="import" href="super-grid.html" />
-	<!-- <link rel="import" href="../super-code/super-code.html" /> -->
+	<script src="../requirejs/require.js"> </script>
+	<title>Super Grid! Demo</title>
+	<script type="text/javascript" src="lib/dojo.config.js"></script>
+	<link rel="import" href="./super-grid.html" />
 </head>
 
 <body>
@@ -21,23 +17,6 @@
 	<super-grid tree="true" selection="true">
 		<super-column field="name" label="Name"></super-column>
 
-		<super-column field="age" label="Age">
-			<template data-editor>
-				<paper-input> </paper-input>
-			</template>
-		</super-column>
-
-		<super-column field="TemplatedAge" label="Age">
-			<template>
-				<h1> {{name}} is {{age}} years old! </h1>
-			</template>
-		</super-column>
-
-		<super-column>
-			<template>
-				<google-map latitude={{latitude}} longitude={{longitude}}> </google-map>
-			</template>
-		</super-column>
 	</super-grid>
 
 	<super-grid tree="true" selection="true">

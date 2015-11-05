@@ -15,12 +15,6 @@ var dojoConfig = {
             location: '../dstore'
 
         }, {
-    		name: 'xstyle',
-    		location: '../xstyle'
-    	}, {
-    		name: 'put-selector',
-    		location: '../put-selector'
-    	}, {
     		name: 'lib',
     		location: './lib'
     	}
