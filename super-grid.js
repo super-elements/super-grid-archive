@@ -117,12 +117,22 @@ require([
 
 	Polymer({
 		is: "super-grid",
+		ready: function () {
+
+		},
+		_triggerEvents: function () {
+			var self = this
+			this.dgrid.on('dgrid-select', function (e) {
+				self.fire('select', e)
+			})
+		},
 		created: function() {
 			this.columnStructure = getColumnStructure.call(this);
 		},
 		attached: function() {
 			createStore.call(this, []);
 			createGrid.call(this);
+			this._triggerEvents()
 		},
 		allowSelect: function(row){
 			this.dgrid.allowSelect(row);
@@ -142,6 +152,14 @@ require([
 		isSelected: function(row){
 			this.dgrid.isSelected(row);
 		},
+		get selected () {
+			var self = this
+			return this.value.filter(function (value){
+				return Object.keys(self.dgrid.selection).some(function(selection) {
+					return (selection == value.id)
+				})
+			})
+		},
 		properties: {
 			tree: {
 				type: "boolean",
@@ -149,10 +167,6 @@ require([
 			},
 			dgrid: {
 				type: "Object"
-			},
-			selection: {
-				type: "String",
-				value: false
 			},
 			selectionMode: {
 				type: "String"
