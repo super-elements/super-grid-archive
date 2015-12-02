@@ -121,11 +121,11 @@ require([
 
 		},
 		listeners: {
-        'supergrid.dgrid-datachange': 'supergridDatachange'
-      },
-			supergridDatachange: function(){
-				this.dgrid.dgrid-datachange();
-			},
+        'supergrid': 'datachangeSupergrid'
+    },
+		datachangeSupergrid: function(){
+			this.dgrid.dgrid-datachange();
+		},
 		_triggerEvents: function () {
 			var self = this
 			this.dgrid.on('dgrid-select', function (e) {
