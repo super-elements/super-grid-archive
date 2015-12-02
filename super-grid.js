@@ -117,12 +117,6 @@ require([
 
 	Polymer({
 		is: "super-grid",
-		// listeners: {
-    //     'supergrid': 'datachangeSupergrid'
-    // },
-		// datachangeSupergrid: function(){
-		// 	this.dgrid.dgrid-datachange()
-		// }, 
 		ready: function () {
 
 		},
@@ -184,6 +178,12 @@ require([
 				type: "boolean",
 				value: true
 			},
+			loadingMessage: {
+				type: "String"
+			},
+			noDataMessage: {
+				type: "String"
+			}
 			allowSelectAll: {
 				type: "boolean",
 				value: false
