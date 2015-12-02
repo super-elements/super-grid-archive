@@ -117,14 +117,14 @@ require([
 
 	Polymer({
 		is: "super-grid",
+		// listeners: {
+    //     'supergrid': 'datachangeSupergrid'
+    // },
+		// datachangeSupergrid: function(){
+		// 	this.dgrid.dgrid-datachange()
+		// }, 
 		ready: function () {
 
-		},
-		listeners: {
-        'supergrid': 'datachangeSupergrid'
-    },
-		datachangeSupergrid: function(){
-			this.dgrid.dgrid-datachange();
 		},
 		_triggerEvents: function () {
 			var self = this
