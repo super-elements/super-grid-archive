@@ -183,7 +183,7 @@ require([
 			},
 			noDataMessage: {
 				type: "String"
-			}
+			},
 			allowSelectAll: {
 				type: "boolean",
 				value: false
