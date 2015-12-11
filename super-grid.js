@@ -126,13 +126,21 @@ require([
 				self.fire('select', e)
 			})
 		},
+		onCellClicked: function(){
+			var self = this
+			this.dgrid.on('.dgrid-cell:click', function (e) {
+					var cell = self.dgrid.cell(e);
+					self.fire('cellClick', cell);
+    	})
+		},
 		created: function() {
 			this.columnStructure = getColumnStructure.call(this);
 		},
 		attached: function() {
 			createStore.call(this, []);
 			createGrid.call(this);
-			this._triggerEvents()
+			this._triggerEvents();
+			this.onCellClicked();
 		},
 		allowSelect: function(row){
 			this.dgrid.allowSelect(row);
