@@ -204,13 +204,15 @@ require([
 
 		},
 		_valueChanged: function(newValue, oldValue) {
-			if (this.dgrid) {
-
+			//if grid is empty to check whether dgrid is undefined or not
+			if (!this.dgrid) {
+			  this.dgrid={};
+			}
+			else{
 				//this is due to a bug in dgrid refreshing
 				createStore.call(this, []);
 				this.dgrid.set('collection', this.store);
-				this.dgrid.refresh();
-
+				this.dgrid.refresh()
 				createStore.call(this, newValue);
 				this.dgrid.set('collection', this.store);
 				this.dgrid.refresh();
