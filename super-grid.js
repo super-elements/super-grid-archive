@@ -196,26 +196,52 @@ require([
 				type: "boolean",
 				value: false
 			},
-			value: {
+
+			// 	value: {
+			// 		type: "Array",
+			// 		value: [],
+			// 		observer: '_valueChanged'
+			// 	}
+			//
+			// },
+			// _valueChanged: function(newValue, oldValue) {
+			// 	if (this.dgrid) {
+			//
+			// 		//this is due to a bug in dgrid refreshing
+			// 		createStore.call(this, []);
+			// 		this.dgrid.set('collection', this.store);
+			// 		this.dgrid.refresh();
+			//
+			// 		createStore.call(this, newValue);
+			// 		this.dgrid.set('collection', this.store);
+			// 		this.dgrid.refresh();
+			// 	}
+			// }
+
+			_value: {
 				type: "Array",
-				value: [],
-				observer: '_valueChanged'
+				value: []
+				// observer: '_valueChanged'
 			}
-
 		},
-		_valueChanged: function(newValue, oldValue) {
-			if (this.dgrid) {
-
+		set value(newValue) {
+			//if grid is empty to check whether dgrid is undefined or not
+			if (!this.dgrid) {
+			  this.dgrid={};
+			}
+			else{
 				//this is due to a bug in dgrid refreshing
 				createStore.call(this, []);
 				this.dgrid.set('collection', this.store);
-				this.dgrid.refresh();
-
+				this.dgrid.refresh()
 				createStore.call(this, newValue);
+				this._value = newValue
 				this.dgrid.set('collection', this.store);
 				this.dgrid.refresh();
 			}
+		},
+		get value () {
+			return this._value ? this._value : []
 		}
-
 	});
 });
