@@ -237,7 +237,11 @@ require([
 				// observer: '_valueChanged'
 			}
 		},
-		_valueChanged: function(newValue, oldValue) {
+// <<<<<<< HEAD
+		set value(newValue) {
+// =======
+		// _valueChanged: function(newValue, oldValue) {
+// >>>>>>> e3e9622257c7c4a6e6da465faa1243caf3528803
 			//if grid is empty to check whether dgrid is undefined or not
 			if (!this.dgrid) {
 			  this.dgrid={};
