@@ -10,6 +10,7 @@
 	<title>Super Grid! Demo</title>
 	<script type="text/javascript" src="lib/dojo.config.js"></script>
 	<link rel="import" href="./super-grid.html" />
+
 </head>
 
 <body>
@@ -19,7 +20,7 @@
 
 	</super-grid>
 
-	<super-grid tree="true" selection="true">
+	<!-- <super-grid tree="true" selection="true">
 		<super-column field="name" label="Name"></super-column>
 
 		<super-column field="age" label="Age">
@@ -39,7 +40,7 @@
 				<google-map latitude={{latitude}} longitude={{longitude}}> </google-map>
 			</template>
 		</super-column>
-	</super-grid>
+	</super-grid> -->
 
 
 	<super-grid selection="true">
@@ -54,10 +55,20 @@
 				<img src="download-icon.png" />
 			</template>
 		</super-column>
+		<super-column field = "type">
+            <template>
+            	{{#ifvalue type value="folder"}}
+                    <img src="download-icon.png" />
+                {{else}}
+                    <img src="document-icon.png" />
+                {{/ifvalue}}
+            </template>
+        </super-column>
+        
 	</super-grid>
 
 
-	<super-grid>
+	<!-- <super-grid>
 		<super-column field ="Tex">
 			<template>
 				<h3> {{name}}</h3>
@@ -70,9 +81,9 @@
 				</a>
 			</template>
 		</super-column>
-	</super-grid>
+	</super-grid> -->
 
-	<super-grid selection="true">
+	<!-- <super-grid selection="true">
 		<super-column field = "C">
 			<template >
 				<img src="download-icon.png" />
@@ -94,16 +105,16 @@
 			</template>
 		</super-column>
 
-	</super-grid>
+	</super-grid> -->
 
-	<super-grid selection="true" tree="true" >
+	<!-- <super-grid selection="true" tree="true" >
 		<super-column renderExpando="true" field="id"></super-column>
 		<super-column field="name">
 
 		</super-column>
-	</super-grid>
+	</super-grid> -->
 <!-- google drive templates -->
-	<super-grid selection="true" tree="true" >
+	<!-- <super-grid selection="true" tree="true" >
 		<super-column field = "checkbox" selector="checkbox"></super-column>
 		<super-column renderExpando="true" field="id"></super-column>
 		<super-column field = "image">
@@ -116,7 +127,7 @@
 				<h3> {{name}}</h3>
 			</template>
 		</super-column>
-	</super-grid>
+	</super-grid> -->
 
 </body>
 
