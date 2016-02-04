@@ -15,6 +15,15 @@ require([
 			data: data
 		});
 	}
+	if (Handlebars) {
+		Handlebars.registerHelper('ifvalue', function (conditional, options) {
+			if (options.hash.value === conditional) {
+				return options.fn(this)
+			} else {
+				return options.inverse(this);
+			}
+		})
+	}
 
 	function createGrid() {
 		var _this = this;
@@ -54,6 +63,8 @@ require([
 
 	}
 
+	
+
 	//This function parses the <super-grid>'s children to find all
 	//<super-column>s. Based on what it finds, a column object is built.
 	//This column object is required by dGrid for making columns.
@@ -71,6 +82,7 @@ require([
 
 			};
 
+			
 
 			var template = '';
 
@@ -96,6 +108,7 @@ require([
 					//Handlebars has to be defined on the doc where super-grid is running.
 					if (Handlebars) {
 						div.innerHTML = Handlebars.compile(template.innerHTML)(object);
+
 					}
 					//If Handlebars isn't defined, simply dump the output as is.
 					else {
@@ -244,4 +257,5 @@ require([
 			return this._value ? this._value : []
 		}
 	});
+	
 });
