@@ -154,7 +154,7 @@ require([
 			createGrid.call(this);
 			this._triggerEvents();
 			this.onCellClicked();
-			this.removeHeader ? this.dgrid.set('showHeader', false):'';
+			this.removeHeader ? this.dgrid.set('showHeader', false) : this.dgrid.set('showHeader', true);
 		},
 		allowSelect: function(row){
 			this.dgrid.allowSelect(row);
@@ -184,7 +184,7 @@ require([
 		},
 		properties: {
 			tree: {
-				type: "boolean",
+				type: Boolean,
 				value: true
 			},
 			dgrid: {
@@ -197,7 +197,7 @@ require([
 				type: "String",
 			},
 			deselectOnRefresh: {
-				type: "boolean",
+				type: Boolean,
 				value: true
 			},
 			loadingMessage: {
@@ -207,12 +207,13 @@ require([
 				type: "String"
 			},
 			allowSelectAll: {
-				type: "boolean",
+				type: Boolean,
 				value: false
 			},
 			removeHeader: {
 				type: Boolean,
-				value: false
+				value: false,
+				reflectToAttribute: true
 			},
 
 			// 	value: {
