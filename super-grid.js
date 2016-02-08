@@ -154,6 +154,7 @@ require([
 			createGrid.call(this);
 			this._triggerEvents();
 			this.onCellClicked();
+			this.removeHeader ? this.dgrid.set('showHeader', false):'';
 		},
 		allowSelect: function(row){
 			this.dgrid.allowSelect(row);
@@ -207,6 +208,10 @@ require([
 			},
 			allowSelectAll: {
 				type: "boolean",
+				value: false
+			},
+			removeHeader: {
+				type: Boolean,
 				value: false
 			},
 
