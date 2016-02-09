@@ -50,7 +50,7 @@ require([
 
 			//selectionMode: 'multiple',
 			columns: _this.columnStructure,
-			collection: _this.store
+			collection: _this.store.getRootCollection()
 
 		});
 
