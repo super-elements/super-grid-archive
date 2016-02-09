@@ -259,8 +259,6 @@ require([
 				this.dgrid.refresh()
 				createStore.call(this, newValue);
 				this._value = newValue
-				this.dgrid.set('collection', this.store);
-				this.dgrid.refresh();
 			}
 		},
 		get value () {
