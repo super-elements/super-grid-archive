@@ -48,7 +48,8 @@ require([
 		//retrieved as Element.dgrid
 		_this.dgrid = new declare(mixins)({
 
-			selectionMode: 'none',
+			selectionMode: 'none',  // rendering expansion of tree leads to selection of the checkbox of the same row, to avoid this 
+									// we set the selectionMode to 'none'
 			columns: _this.columnStructure,
 			collection: _this.store.getRootCollection()
 
