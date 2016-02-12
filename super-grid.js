@@ -48,7 +48,8 @@ require([
 		//retrieved as Element.dgrid
 		_this.dgrid = new declare(mixins)({
 
-			//selectionMode: 'multiple',
+			selectionMode: 'none',  // rendering expansion of tree leads to selection of the checkbox of the same row, to avoid this 
+									// we set the selectionMode to 'none'
 			columns: _this.columnStructure,
 			collection: _this.store.getRootCollection()
 
@@ -63,7 +64,7 @@ require([
 
 	}
 
-	
+
 
 	//This function parses the <super-grid>'s children to find all
 	//<super-column>s. Based on what it finds, a column object is built.
@@ -82,7 +83,7 @@ require([
 
 			};
 
-			
+
 
 			var template = '';
 
@@ -255,15 +256,17 @@ require([
 			else{
 				//this is due to a bug in dgrid refreshing
 				createStore.call(this, []);
-				this.dgrid.set('collection', this.store);
+				this.dgrid.set('collection', this.store.getRootCollection());
 				this.dgrid.refresh()
 				createStore.call(this, newValue);
 				this._value = newValue
+				this.dgrid.set('collection', this.store.getRootCollection());
+				this.dgrid.refresh();
 			}
 		},
 		get value () {
 			return this._value ? this._value : []
 		}
 	});
-	
+
 });
