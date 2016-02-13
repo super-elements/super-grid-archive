@@ -162,11 +162,13 @@ require([
 					var cell = self.dgrid.cell(e);
 
 					self.fire('cellClick', cell);
-					
+
+
 					if(cell.column.renderExpando)
 					{
 						self.fire('expand', cell);
 					}
+
 
     	})
 		},
