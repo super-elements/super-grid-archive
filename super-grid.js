@@ -1,4 +1,3 @@
-var grid;
 require([
 	'dojo/_base/declare',
 	'dojo/dom-class',
@@ -36,8 +35,11 @@ require([
 		//Holding array for all the Classes we have to mixin
 		var mixins = [];
 
+		//checking whether the grid is tree or not
+		_this.isTree=false;
+
 		//Decide which mixins to push based on the Host Element's Attributes
-		_this.getAttribute('tree') ? mixins.push(Tree) : null;
+
 
 		//_this.getAttribute('selection') ? mixins.push(Selection) : null;
 
@@ -45,7 +47,11 @@ require([
 		mixins.push(OnDemandGrid);
 		mixins.push(Selector);
 		mixins.push(Editor);
-		mixins.push(Tree);
+
+		_this.tree ? (function(){
+			_this.isTree=true
+			mixins.push(Tree);
+		})() : _this.isTree=false;
 
 
 		//Create a new instance of dgrid. For later purposes we are storing
@@ -56,11 +62,10 @@ require([
 			selectionMode: 'none',  //rendering expansion of tree leads to selection of the checkbox of the same row, to avoid this
  								// we set the selectionMode to 'none'
 			columns: _this.columnStructure,
-			collection: _this.store.getRootCollection()
+			collection: _this.store
 
 		});
 
-		grid = _this.dgrid;
 
 
 		//Finally append the dGrid instance to the Host DOM.
@@ -128,15 +133,7 @@ require([
 				}
 			}
 
-			column.selector = superColumn.getAttribute('selector') == 'checkbox' ?
-
-			function(column, selected, cell, object){
-				domClass.add(cell, 'dgrid-selector');
-				return cell.input || (cell.input = domConstruct.create('mat-checkbox', {
-					type: "normal"
-
-				},  cell));
-		} : null;
+			column.selector = superColumn.getAttribute('selector') == 'checkbox' ? "checkbox" : null;
 
 
 			if (superColumn.getAttribute('renderExpando') == 'true') {
@@ -204,7 +201,8 @@ require([
 		properties: {
 			tree: {
 				type: Boolean,
-				value: true
+				value: false,
+				reflectToAttribute: true
 			},
 			dgrid: {
 				type: "Object"
@@ -271,7 +269,7 @@ require([
 			if (!this.dgrid) {
 			  this.dgrid={};
 			}
-			else{
+			if(this.isTree==true){
 				//this is due to a bug in dgrid refreshing
 				createStore.call(this, []);
 				this.dgrid.set('collection', this.store.getRootCollection());
@@ -279,6 +277,17 @@ require([
 				createStore.call(this, newValue);
 				this._value = newValue
 				this.dgrid.set('collection', this.store.getRootCollection());
+				this.dgrid.refresh()
+			}
+
+
+			else{
+				createStore.call(this, []);
+				this.dgrid.set('collection', this.store);
+				this.dgrid.refresh()
+				createStore.call(this, newValue);
+				this._value = newValue
+				this.dgrid.set('collection', this.store);
 				this.dgrid.refresh()
 			}
 		},
