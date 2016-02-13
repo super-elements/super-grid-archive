@@ -59,13 +59,8 @@ require([
 		//retrieved as Element.dgrid
 		_this.dgrid = new declare(mixins)({
 
-<<<<<<< HEAD
-			selectionMode: 'none',  // rendering expansion of tree leads to selection of the checkbox of the same row, to avoid this 
-									// we set the selectionMode to 'none'
-=======
 			selectionMode: 'none',  //rendering expansion of tree leads to selection of the checkbox of the same row, to avoid this
  								// we set the selectionMode to 'none'
->>>>>>> super-grid-tree-issues
 			columns: _this.columnStructure,
 			collection: _this.store
 
@@ -82,11 +77,8 @@ require([
 	}
 
 
-<<<<<<< HEAD
-=======
 
 
->>>>>>> super-grid-tree-issues
 
 	//This function parses the <super-grid>'s children to find all
 	//<super-column>s. Based on what it finds, a column object is built.
@@ -163,11 +155,14 @@ require([
 				self.fire('select', e)
 			})
 		},
-		onCellClicked: function(){
+		attachCellClickHandler: function(){
 			var self = this
 			this.dgrid.on('.dgrid-cell:click', function (e) {
 					var cell = self.dgrid.cell(e);
+
 					self.fire('cellClick', cell);
+					self.fire('expand', cell);
+
     	})
 		},
 		created: function() {
@@ -177,7 +172,7 @@ require([
 			createStore.call(this, []);
 			createGrid.call(this);
 			this._triggerEvents();
-			this.onCellClicked();
+			this.attachCellClickHandler();
 			this.removeHeader ? this.dgrid.set('showHeader', false) : this.dgrid.set('showHeader', true);
 		},
 		allowSelect: function(row){
@@ -281,13 +276,6 @@ require([
 				//this is due to a bug in dgrid refreshing
 				createStore.call(this, []);
 				this.dgrid.set('collection', this.store.getRootCollection());
-<<<<<<< HEAD
-				this.dgrid.refresh()
-				createStore.call(this, newValue);
-				this._value = newValue
-				this.dgrid.set('collection', this.store.getRootCollection());
-				this.dgrid.refresh();
-=======
 				this.dgrid.refresh()
 				createStore.call(this, newValue);
 				this._value = newValue
@@ -304,7 +292,6 @@ require([
 				this._value = newValue
 				this.dgrid.set('collection', this.store);
 				this.dgrid.refresh()
->>>>>>> super-grid-tree-issues
 			}
 		},
 		get value () {
