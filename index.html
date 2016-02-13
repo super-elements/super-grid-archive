@@ -8,17 +8,19 @@
 	<script src="../handlebars/handlebars.js"> </script>
 	<script src="../requirejs/require.js"> </script>
 	<title>Super Grid! Demo</title>
-	<script type="text/javascript" src="lib/dojo.config.js"></script>
+	<script type="text/javascript" src="./dojo.config.js"></script>
 	<link rel="import" href="./super-grid.html" />
+
 
 </head>
 
 <body>
-
-	<super-grid tree selection="true" remove-header>  <!-- inlcude remove-header Boolean property to remove the grid header -->
+	 <!-- inlcude remove-header Boolean property to remove the grid header -->
+<!--
+	<super-grid tree selection="true" remove-header>
 		<super-column field="name" label="Name"></super-column>
 
-	</super-grid>
+	</super-grid> -->
 
 	<!-- <super-grid tree="true" selection="true">
 		<super-column field="name" label="Name"></super-column>
@@ -43,7 +45,7 @@
 	</super-grid> -->
 
 
-	<super-grid selection="true">
+	<super-grid selection="true" remove-header>
 		<super-column field = "checkbox" selector="checkbox"></super-column>
 		<super-column field = "text">
 			<template>
@@ -64,7 +66,7 @@
                 {{/ifvalue}}
             </template>
         </super-column>
-        
+
 	</super-grid>
 
 
@@ -114,7 +116,7 @@
 		</super-column>
 	</super-grid> -->
 <!-- google drive templates -->
-	<!-- <super-grid selection="true" tree="true" >
+	<super-grid selection="true" tree >
 		<super-column field = "checkbox" selector="checkbox"></super-column>
 		<super-column renderExpando="true" field="id"></super-column>
 		<super-column field = "image">
@@ -127,7 +129,7 @@
 				<h3> {{name}}</h3>
 			</template>
 		</super-column>
-	</super-grid> -->
+	</super-grid>
 
 </body>
 
