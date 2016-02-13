@@ -155,7 +155,7 @@ require([
 				self.fire('select', e)
 			})
 		},
-		attachedCellClickedHandler: function(){
+		attachCellClickedHandler: function(){
 			var self = this
 			this.dgrid.on('.dgrid-cell:click', function (e) {
 					var cell = self.dgrid.cell(e);
@@ -172,7 +172,7 @@ require([
 			createStore.call(this, []);
 			createGrid.call(this);
 			this._triggerEvents();
-			this.attachedCellClickedHandler();
+			this.attachCellClickedHandler();
 			this.removeHeader ? this.dgrid.set('showHeader', false) : this.dgrid.set('showHeader', true);
 		},
 		allowSelect: function(row){
