@@ -59,8 +59,9 @@ require([
 		//retrieved as Element.dgrid
 		_this.dgrid = new declare(mixins)({
 
-			selectionMode: 'none',  //rendering expansion of tree leads to selection of the checkbox of the same row, to avoid this
- 								// we set the selectionMode to 'none'
+			//rendering expansion of tree leads to selection of the checkbox of the same row, to avoid this
+ 			// we set the selectionMode to 'none'
+			selectionMode: 'none',
 			columns: _this.columnStructure,
 			collection: _this.store
 
@@ -181,6 +182,24 @@ require([
 			this._triggerEvents();
 			this.attachCellClickHandler();
 			this.removeHeader ? this.dgrid.set('showHeader', false) : this.dgrid.set('showHeader', true);
+
+
+			if(this.selectionMode == 'none'){
+				this.dgrid.set('selectionMode', 'none');
+			}
+			else if (this.selectionMode == 'single') {
+				this.dgrid.set('selectionMode', 'single');
+			}
+			else if (this.selectionMode == 'extended') {
+				this.dgrid.set('selectionMode', 'extended');
+			}
+			else if (this.selectionMode == 'multiple') {
+				this.dgrid.set('selectionMode', 'multiple');
+			}
+			else if (this.selectionMode == 'toggle') {
+				this.dgrid.set('selectionMode', 'toggle');
+			}
+
 		},
 		allowSelect: function(row){
 			this.dgrid.allowSelect(row);
@@ -240,6 +259,12 @@ require([
 			removeHeader: {
 				type: Boolean,
 				value: false,
+				reflectToAttribute: true
+			},
+			
+			//selectionMode attribute for super-grid
+			selectionMode: {
+				type: String,
 				reflectToAttribute: true
 			},
 
